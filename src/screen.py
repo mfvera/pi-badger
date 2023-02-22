@@ -9,8 +9,11 @@ LCD_ROWS = 2
 def open_screen():
     i2c = board.I2C()
     screen = Character_LCD_RGB_I2C(i2c, LCD_COLUMNS, LCD_ROWS)
+    screen.display = True
+    screen.color = [100,100,100]
     try:
         yield screen
     finally:
         screen.clear()
         screen.display = False
+        screen.color = [0,0,0]
