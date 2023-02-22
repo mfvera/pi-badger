@@ -1,5 +1,7 @@
 import asyncio as aio
+
 import aioconsole
+
 
 async def listen_buttons(keypad, callback):
     button_states = {

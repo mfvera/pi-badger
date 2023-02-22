@@ -1,5 +1,6 @@
-import board
 import contextlib
+
+import board
 from adafruit_character_lcd.character_lcd_rgb_i2c import Character_LCD_RGB_I2C
 
 LCD_COLUMNS = 16

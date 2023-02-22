@@ -1,5 +1,10 @@
-from collections.abc import Mapping
 from collections import defaultdict
+from collections.abc import Mapping
+
+
+# Why? Because inlining the render method is ugly with `lambda` and I wanted some deco
+def frame_definition(frame_renderer):
+    return Frame(frame_renderer)
 
 class Frame():
     def __init__(self, render):
@@ -26,6 +31,5 @@ class FrameController():
         self.current_frame = self.current_frame.get_next_frame(transition)
         self.render(*args, **kwargs)
 
-    def reset(self, *args, **kwargs):
+    def restart(self):
         self.current_frame = self.starting_frame
-        self.render(*args, **kwargs)
