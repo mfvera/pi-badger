@@ -9,7 +9,7 @@ from adafruit_character_lcd.character_lcd_rgb_i2c import Character_LCD_RGB_I2C
 
 import listeners
 from screen import LCD_COLUMNS, open_screen
-from ui import Frame, FrameController, frame_definition
+from ui import Frame, FrameController
 
 """
 1. Add the ability to export the user list at-will via developer provided callback
@@ -58,7 +58,7 @@ class PiBadger(FrameController):
         self.file.flush()
 
     def _build_frames(self) -> "Frame":
-        @frame_definition
+        @Frame
         def main_frame(badge_id = ""):
             if badge_id:
                 self.screen.clear()
@@ -67,22 +67,22 @@ class PiBadger(FrameController):
             self.screen.clear()
             self.screen.message = "Ready..."
 
-        @frame_definition
+        @Frame
         def total_attendees_frame():
             self.screen.clear()
             self.screen.message = f"Total guests:\n{centered(str(self.login_count))}"
 
-        @frame_definition
+        @Frame
         def shutdown_frame():
             self.screen.clear()
             self.screen.message = f"{centered('Shutdown?')}\n{centered('<- N | Y ->')}"
 
-        @frame_definition
+        @Frame
         def shutdown_for_sure_frame():
             self.screen.clear()
             self.screen.message = f"{centered('Are you certain?')}\n{centered('<- N | Y ->')}"
 
-        @frame_definition
+        @Frame
         def final_shutdown_frame():
             self.screen.clear()
             self.screen.display = False

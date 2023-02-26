@@ -1,11 +1,6 @@
 from collections import defaultdict
 from collections.abc import Mapping
 
-
-# Why? Because inlining the render method is ugly with `lambda` and I wanted some deco
-def frame_definition(frame_renderer):
-    return Frame(frame_renderer)
-
 class Frame():
     def __init__(self, render):
         def default_no_op_frame():
