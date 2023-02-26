@@ -110,7 +110,7 @@ class PiBadger(FrameController):
 
         return badge_ids
 
-with open_screen() as screen, open(badge_filename, mode="r+") as badge_file:
+with open_screen() as screen, open(badge_filename, mode="w+") as badge_file:
     loop = aio.get_event_loop()
     badger = PiBadger(badge_file, loop, screen)
     # Shutdown is handled on the "shutdown" frame renderer
